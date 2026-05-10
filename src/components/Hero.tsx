@@ -65,7 +65,7 @@ export function Hero({ feature }: Props) {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <motion.a
-              href="#play"
+              href="#series"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-black/30 transition-shadow hover:shadow-xl"
