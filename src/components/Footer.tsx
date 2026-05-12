@@ -7,9 +7,8 @@ export function Footer() {
             VELORA<span className="text-violet-400">+</span>
           </p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-white/55">
-            Projeto demonstrativo de interface — marca e catálogo são fictícios.
-            Layout inspirado em serviços de streaming premium, com foco em
-            responsividade e motion discreto.
+            Pôsteres carregados do The Movie Database (TMDB). Títulos e imagens
+            pertencem aos estúdios; uso aqui é só para demonstração de interface.
           </p>
         </div>
         <nav className="flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/55">

@@ -6,7 +6,7 @@ const navLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Séries', href: '#series' },
   { label: 'Filmes', href: '#filmes' },
-  { label: 'Originais', href: '#originais' },
+  { label: 'Comédias', href: '#comedias' },
   { label: 'Infantil', href: '#kids' },
 ]
 

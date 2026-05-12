@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# VELORA+
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface de **streaming fictícia** inspirada em serviços premium (layout escuro, hero em destaque, carrosséis horizontais e navegação responsiva). Projeto de **demonstração front-end**: a marca **VELORA+** não representa um serviço real.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Página inicial com **destaque** (hero animado, trailer no YouTube ao clicar em *Assistir* onde configurado)
+- **Carrosséis** por seção (Em alta, Comédias, Filmes premiados, Continuar assistindo)
+- **Modal de detalhes** ao clicar em um título (sinopse, metadados, botão de trailer)
+- **Menu mobile** com animação
+- **Design responsivo** e efeitos com Framer Motion
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/) 19 + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vite.dev/)
+- [Tailwind CSS](https://tailwindcss.com/) v4 (`@tailwindcss/vite`)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Lucide React](https://lucide.dev/) (ícones)
 
-## Expanding the ESLint configuration
+## Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Node.js](https://nodejs.org/) (recomendado: LTS atual)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Como rodar
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Clone o repositório, entre na pasta e instale as dependências:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ambiente de desenvolvimento (com hot reload):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Abra o endereço que o Vite mostrar no terminal (geralmente `http://localhost:5173`).
+
+Build de produção:
+
+```bash
+npm run build
+```
+
+Pré-visualizar o build:
+
+```bash
+npm run preview
+```
+
+Lint:
+
+```bash
+npm run lint
+```
+
+## Estrutura principal
+
+- `src/App.tsx` — composição da página e estado dos modais
+- `src/components/` — cabeçalho, rodapé, hero, carrosséis, modais
+- `src/data/catalog.ts` — catálogo de exemplo (títulos reais de filmes para demonstração)
+- `public/` — assets estáticos (ex.: imagem do hero em destaque)
+
+## Imagens e marcas
+
+- **Pôsteres** são carregados a partir do CDN do [The Movie Database (TMDB)](https://www.themoviedb.org/). Os títulos e artes pertencem aos respectivos estúdios; o uso aqui é apenas para **portfólio / estudo de interface**.
+- **Trailers** incorporados via YouTube (embed), apenas onde há `trailerYoutubeId` no catálogo.
+
+## Licença
+
+Este repositório é um projeto pessoal de demonstração. Não há licença de uso comercial do conteúdo audiovisual exibido; respeite os termos do TMDB, do YouTube e dos detentores dos direitos ao reutilizar ou publicar qualquer variante.
+
+---
+
+Desenvolvido por [Maicon Gonçalves (@maicoun)](https://github.com/maicoun).

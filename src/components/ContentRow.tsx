@@ -1,15 +1,35 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
-import type { CatalogItem } from '../data/catalog'
+import { POSTER_FALLBACK_URL, type CatalogItem } from '../data/catalog'
 
 type Props = {
   title: string
   items: CatalogItem[]
   anchorId?: string
+  onItemClick?: (item: CatalogItem) => void
 }
 
-export function ContentRow({ title, items, anchorId }: Props) {
+function CatalogPoster({ item }: { item: CatalogItem }) {
+  const [src, setSrc] = useState(item.image)
+
+  useEffect(() => {
+    setSrc(item.image)
+  }, [item.image])
+
+  return (
+    <img
+      src={src}
+      alt=""
+      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+      loading="lazy"
+      decoding="async"
+      onError={() => setSrc(POSTER_FALLBACK_URL)}
+    />
+  )
+}
+
+export function ContentRow({ title, items, anchorId, onItemClick }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const scrollByDir = (dir: -1 | 1) => {
@@ -72,14 +92,10 @@ export function ContentRow({ title, items, anchorId }: Props) {
             <button
               type="button"
               className="block w-full overflow-hidden rounded-lg ring-1 ring-white/10 transition-[box-shadow,ring-color] duration-300 group-hover:shadow-xl group-hover:shadow-violet-500/20 group-hover:ring-violet-400/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400"
+              onClick={() => onItemClick?.(item)}
             >
               <div className="relative aspect-[2/3] overflow-hidden bg-zinc-900">
-                <img
-                  src={item.image}
-                  alt=""
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-                  loading="lazy"
-                />
+                <CatalogPoster item={item} />
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden
